@@ -15,16 +15,22 @@
 
 
 
-<meta name="description" content="为解决使 html 页面中 &amp;lt;span&amp;gt;、&amp;lt;div&amp;gt;、&amp;lt;input&amp;gt; 标签内容在有限宽度中溢出部分用省略号省略的问题。可使用 css 分别控制文本不换行、超出部分隐藏、隐藏部分省略号代替。">
+<meta name="description" content="在 《Thinking in Java》 一书中，有如下说法：
+
+把将导出类看作是它的基类的过程成为向上转型(upcasting)。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS中的长度超出省略控制">
-<meta property="og:url" content="https://galdon.github.io/2017/02/17/02-17-css-ellipsis/index.html">
+<meta property="og:title" content="每天巩固Java知识(一) 上溯造型和下溯造型">
+<meta property="og:url" content="https://galdon.github.io/2017/02/21/02-22-java-01/index.html">
 <meta property="og:site_name" content="Galdon's blog">
-<meta property="og:description" content="为解决使 html 页面中 &amp;lt;span&amp;gt;、&amp;lt;div&amp;gt;、&amp;lt;input&amp;gt; 标签内容在有限宽度中溢出部分用省略号省略的问题。可使用 css 分别控制文本不换行、超出部分隐藏、隐藏部分省略号代替。">
-<meta property="og:updated_time" content="2017-02-16T17:22:40.000Z">
+<meta property="og:description" content="在 《Thinking in Java》 一书中，有如下说法：
+
+把将导出类看作是它的基类的过程成为向上转型(upcasting)。">
+<meta property="og:updated_time" content="2017-02-21T17:27:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS中的长度超出省略控制">
-<meta name="twitter:description" content="为解决使 html 页面中 &amp;lt;span&amp;gt;、&amp;lt;div&amp;gt;、&amp;lt;input&amp;gt; 标签内容在有限宽度中溢出部分用省略号省略的问题。可使用 css 分别控制文本不换行、超出部分隐藏、隐藏部分省略号代替。">
+<meta name="twitter:title" content="每天巩固Java知识(一) 上溯造型和下溯造型">
+<meta name="twitter:description" content="在 《Thinking in Java》 一书中，有如下说法：
+
+把将导出类看作是它的基类的过程成为向上转型(upcasting)。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +62,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>CSS中的长度超出省略控制 | Galdon&#39;s blog</title>
+<title>每天巩固Java知识(一) 上溯造型和下溯造型 | Galdon&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -258,11 +264,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-02-17-css-ellipsis" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-02-22-java-01" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/02/17/02-17-css-ellipsis/" class="article-date">
-      <time datetime="2017-02-16T16:33:17.000Z" itemprop="datePublished">2017-02-17</time>
+      <a href="/2017/02/21/02-22-java-01/" class="article-date">
+      <time datetime="2017-02-21T15:57:27.000Z" itemprop="datePublished">2017-02-21</time>
 </a>
 
 
@@ -277,7 +283,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      CSS中的长度超出省略控制
+      每天巩固Java知识(一) 上溯造型和下溯造型
     </h1>
   
 
@@ -288,7 +294,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端/">后端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -298,10 +304,27 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>为解决使 <font color="FF3030"><strong>html</strong></font> 页面中 <font color="FF3030"><strong>&lt;span&gt;、&lt;div&gt;、&lt;input&gt;</strong></font> 标签内容在有限宽度中溢出部分用省略号省略的问题。可使用 <font color="FF3030"><strong>css</strong></font> 分别控制文本不换行、超出部分隐藏、隐藏部分省略号代替。</p>
+        <p>在 《Thinking in Java》 一书中，有如下说法：</p>
+<blockquote>
+<p>把将导出类看作是它的基类的过程成为向上转型(upcasting)。</p>
+</blockquote>
 <a id="more"></a>
-<p>代码如下：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">.test&#123;</div><div class="line">	white-space:nowrap;        //文本不换行</div><div class="line">	overflow:hidden;           //文本超出隐藏</div><div class="line">	text-overflow:ellipsis;    //超出部分省略号代替</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其实此处提到的向上转型即上溯造型，反之为下溯造型。</p>
+<h2 id="上溯造型"><a href="#上溯造型" class="headerlink" title="上溯造型"></a>上溯造型</h2><p>一个简单的例子：在一个需要传入基类对象作为方法参数的地方，我们以其导出类对象代替传入，编译器编译时就会上溯造型，将该参数的类型<font color="FF3030">转换为其父类的类型</font>，具体例子为如下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shape</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Circle</span> <span class="keyword">extends</span> <span class="title">Shape</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"Circle"</span>);</div><div class="line">    &#125;;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">drawDouble</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"CircleCircle"</span>);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Square</span> <span class="keyword">extends</span> <span class="title">Shape</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"Square"</span>);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>根据 Java 的继承特性，该转换使得这个导出类的接口变得更“<font color="FF3030">窄</font>“，在此之后的代码中若出现调用该导出类(作为参数传入)特有的方法或属性时，因编译器已经将该对象类型转换为基类类型，并且基类不具备导出类中的特有方法和属性，这时编译不能通过，我们认为这个过程是<font color="FF3030">安全的类型转换</font>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span> <span class="keyword">throws</span> java.lang.Exception </span>&#123;</div><div class="line">		Circle circle = <span class="keyword">new</span> Circle();</div><div class="line">		Shape shape = <span class="keyword">new</span> Shape();</div><div class="line">		upCasting(circle);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">// 上溯造型示例</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">upCasting</span><span class="params">(Shape shape)</span> </span>&#123;</div><div class="line">	   shape.drawDouble();  <span class="comment">//编译时就会报错，安全的类型转换</span></div><div class="line">	   shape.draw();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>同样，在 《Thinking in Java》 一书中还提到：</p>
+<blockquote>
+<p>一个面向对象程序一定会在某处包含向上转型，因为这正是将自己从必须知道确切类型中解放的关键。</p>
+</blockquote>
+<p>这也就是我们为什么经常在面向对象编程中普遍使用上述例子的原因。我们当然可以将这个例子中的参数类型改为具体的某个导出类的类型，但是当我们需要实现一个几乎同样的方法，并且其参数为另一个导出类的时候，我们就只能再粘贴一份相同的代码，只将参数类型改为另一个导出类的类型，显然这是不合适的。</p>
+<p>利用上溯造型的原理，我们只需像例子中那样，将参数类型定为基类的类型，这也就是我们上面提到的</p>
+<blockquote>
+<p>将自己从必须知道确切类型中解放。</p>
+</blockquote>
+<h2 id="下溯造型"><a href="#下溯造型" class="headerlink" title="下溯造型"></a>下溯造型</h2><p>下溯造型与上溯造型相反，它是一种强制类型转换。由于这种转换在程序的编译期无法被检测出来，所以运行时若不做限制则极有可能抛出 <font color="FF3030"><em>ClassCastException</em></font> 异常，显然它是<font color="FF3030">不安全的类型转换</font>，我们在编写程序时应尽量避免。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span> <span class="keyword">throws</span> java.lang.Exception </span>&#123;</div><div class="line">		Circle circle = <span class="keyword">new</span> Circle();</div><div class="line">		Shape shape = <span class="keyword">new</span> Shape();</div><div class="line">		downCasting(shape);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">// 下溯造型示例</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">downCasting</span><span class="params">(Shape shape)</span> </span>&#123;</div><div class="line">	   Circle circle = (Circle) shape;  <span class="comment">//运行时异常：java.lang.ClassCastException，不安全的类型转换</span></div><div class="line">	   circle.draw();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -313,16 +336,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/02/21/02-22-java-01/">
-                    每天巩固Java知识(一) 上溯造型和下溯造型
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/02/15/first-article/">
-                    一个承载了美好愿望的开始
+                <a href="/2017/02/17/02-17-css-ellipsis/">
+                    CSS中的长度超出省略控制
                 </a>
             </div>
         
@@ -334,7 +351,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#上溯造型"><span class="toc-number">1.</span> <span class="toc-text">上溯造型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下溯造型"><span class="toc-number">2.</span> <span class="toc-text">下溯造型</span></a></li></ol>
         
     </div>
     <style>
@@ -371,7 +388,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2017/02/17/02-17-css-ellipsis/" data-title="CSS中的长度超出省略控制" data-url="https://galdon.github.io/2017/02/17/02-17-css-ellipsis/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/02/21/02-22-java-01/" data-title="每天巩固Java知识(一) 上溯造型和下溯造型" data-url="https://galdon.github.io/2017/02/21/02-22-java-01/"></div>
     <script>
         var duoshuoQuery = {short_name:"galdon"};
         var loadComment = function(){
@@ -394,15 +411,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/02/21/02-22-java-01/" title="上一篇: 每天巩固Java知识(一) 上溯造型和下溯造型">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/02/15/first-article/" title="下一篇: 一个承载了美好愿望的开始">
+            <a href="/2017/02/17/02-17-css-ellipsis/" title="下一篇: CSS中的长度超出省略控制">
                 <i class="fa fa-angle-right"></i>
             </a>
         
