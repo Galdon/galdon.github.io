@@ -15,16 +15,16 @@
 
 
 
-<meta name="description" content="为解决使 html 页面中 &amp;lt;span&amp;gt;、&amp;lt;div&amp;gt;、&amp;lt;input&amp;gt; 标签内容在有限宽度中溢出部分用省略号省略的问题。可使用 css 分别控制文本不换行、超出部分隐藏、隐藏部分省略号代替。">
+<meta name="description" content="Java 中的值传递和引用传递算是一个老生常谈的问题了，并且这个问题一直活跃在各大公司的基础面试题当中，虽然遇到这种问题不会犯错，但对其原理还是有些模糊，这次特对这个问题做一个全面的整理。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS中的长度超出省略控制">
-<meta property="og:url" content="https://galdon.github.io/2017/02/17/02-17-css-ellipsis/index.html">
+<meta property="og:title" content="每天巩固Java知识(二) 值传递和引用传递">
+<meta property="og:url" content="https://galdon.github.io/2017/02/23/02-23-java-02/index.html">
 <meta property="og:site_name" content="Galdon's blog">
-<meta property="og:description" content="为解决使 html 页面中 &amp;lt;span&amp;gt;、&amp;lt;div&amp;gt;、&amp;lt;input&amp;gt; 标签内容在有限宽度中溢出部分用省略号省略的问题。可使用 css 分别控制文本不换行、超出部分隐藏、隐藏部分省略号代替。">
-<meta property="og:updated_time" content="2017-02-16T17:22:40.000Z">
+<meta property="og:description" content="Java 中的值传递和引用传递算是一个老生常谈的问题了，并且这个问题一直活跃在各大公司的基础面试题当中，虽然遇到这种问题不会犯错，但对其原理还是有些模糊，这次特对这个问题做一个全面的整理。">
+<meta property="og:updated_time" content="2017-02-22T17:33:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS中的长度超出省略控制">
-<meta name="twitter:description" content="为解决使 html 页面中 &amp;lt;span&amp;gt;、&amp;lt;div&amp;gt;、&amp;lt;input&amp;gt; 标签内容在有限宽度中溢出部分用省略号省略的问题。可使用 css 分别控制文本不换行、超出部分隐藏、隐藏部分省略号代替。">
+<meta name="twitter:title" content="每天巩固Java知识(二) 值传递和引用传递">
+<meta name="twitter:description" content="Java 中的值传递和引用传递算是一个老生常谈的问题了，并且这个问题一直活跃在各大公司的基础面试题当中，虽然遇到这种问题不会犯错，但对其原理还是有些模糊，这次特对这个问题做一个全面的整理。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>CSS中的长度超出省略控制 | Galdon&#39;s blog</title>
+<title>每天巩固Java知识(二) 值传递和引用传递 | Galdon&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -258,11 +258,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-02-17-css-ellipsis" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-02-23-java-02" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/02/17/02-17-css-ellipsis/" class="article-date">
-      <time datetime="2017-02-16T16:33:17.000Z" itemprop="datePublished">2017-02-17</time>
+      <a href="/2017/02/23/02-23-java-02/" class="article-date">
+      <time datetime="2017-02-22T16:31:50.000Z" itemprop="datePublished">2017-02-23</time>
 </a>
 
 
@@ -277,7 +277,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      CSS中的长度超出省略控制
+      每天巩固Java知识(二) 值传递和引用传递
     </h1>
   
 
@@ -288,7 +288,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端/">后端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -298,10 +298,22 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>为解决使 <font color="FF3030"><strong>html</strong></font> 页面中 <font color="FF3030"><strong>&lt;span&gt;、&lt;div&gt;、&lt;input&gt;</strong></font> 标签内容在有限宽度中溢出部分用省略号省略的问题。可使用 <font color="FF3030"><strong>css</strong></font> 分别控制文本不换行、超出部分隐藏、隐藏部分省略号代替。</p>
+        <p>Java 中的值传递和引用传递算是一个老生常谈的问题了，并且这个问题一直活跃在各大公司的基础面试题当中，虽然遇到这种问题不会犯错，但对其原理还是有些模糊，这次特对这个问题做一个全面的整理。</p>
 <a id="more"></a>
-<p>代码如下：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">.test&#123;</div><div class="line">	white-space:nowrap;        //文本不换行</div><div class="line">	overflow:hidden;           //文本超出隐藏</div><div class="line">	text-overflow:ellipsis;    //超出部分省略号代替</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="基本类型和引用类型的不同"><a href="#基本类型和引用类型的不同" class="headerlink" title="基本类型和引用类型的不同"></a>基本类型和引用类型的不同</h2><h3 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h3><p>在 《Thinking in Java》 一书中，基本类型有如下描述</p>
+<blockquote>
+<p>Java采取与C和C++相同的方法。也就是说，不用new来创建变量，而是创建一个并非是引用的“自动”变量。这个变量直接存储“值”，并置于堆栈中，因此更加高效。</p>
+</blockquote>
+<p>由此可以看出，基本类型存于<font color="FF3030">堆栈</font>中，并且直接存储了它的<font color="FF3030">值</font>。</p>
+<h3 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h3><p>在创建一个对象时，对象的引用会存放在堆栈中，储存的是引用关系，而对象的值则存放在<font color="FF3030">堆</font>中，储存的是<font color="FF3030">对象本身</font>。</p>
+<h2 id="值传递和引用传递"><a href="#值传递和引用传递" class="headerlink" title="值传递和引用传递"></a>值传递和引用传递</h2><h3 id="值传递"><a href="#值传递" class="headerlink" title="值传递"></a>值传递</h3><p>一个方法在调用时，实参把值传给形参，形参进入方法后实际上是实参的值的一份拷贝，在这之后再对这个型参所做任何操作实际上只是对这份拷贝做操作，原有的值也就是实参的值不会发生任何变化。<font color="FF3030">当参数是基本类型时，参数传递为值传递。</font></p>
+<h3 id="引用传递"><a href="#引用传递" class="headerlink" title="引用传递"></a>引用传递</h3><p>权威的说法是：Java 只有值传递，没有引用传递。实际上这里所说的引用传递依然是值传递，只不过这里的值是一个引用关系。具体来说，一个方法在调用时，实参所代表的引用传给形参，形参进入方法后实际上是一个地址，也就是形参和实参所代表的意思相同，都是一个地址，在这之后再对这个地址所找到的值进行操作均会影响到原有的实参所指的值。</p>
+<font color="FF3030">当参数是对象类型时，参数传递依然是值传递，但这个值指的是一个引用。</font>
+
+<h3 id="一些特殊的类型"><a href="#一些特殊的类型" class="headerlink" title="一些特殊的类型"></a>一些特殊的类型</h3><p>String, Integer, Double 等 immutable 的类型特殊处理，可以理解为传值，最后的操作不会修改实参对象。</p>
+<h3 id="简单例子"><a href="#简单例子" class="headerlink" title="简单例子"></a>简单例子</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        Test test = <span class="keyword">new</span> Test();</div><div class="line">        </div><div class="line">        <span class="comment">//传递的是值</span></div><div class="line">        <span class="keyword">int</span> a = <span class="number">0</span>; </div><div class="line">        test.test1(a);<span class="comment">//这里传递的参数a就是按值传递 </span></div><div class="line">        System.out.println(a);</div><div class="line">        </div><div class="line">        <span class="comment">//传递的是引用</span></div><div class="line">        MyObj obj = <span class="keyword">new</span> MyObj(); </div><div class="line">        test.test2(obj);<span class="comment">//这里传递的参数obj就是引用传递</span></div><div class="line">        System.out.println(obj.b);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123; </div><div class="line">        a = a++;</div><div class="line">        System.out.println(a);</div><div class="line">    &#125; </div><div class="line">     </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">(MyObj obj)</span></span>&#123; </div><div class="line">        obj.b = <span class="number">1</span>;</div><div class="line">        System.out.println(obj.b);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyObj</span></span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span> b = <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="经典问题"><a href="#经典问题" class="headerlink" title="经典问题"></a>经典问题</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Swap</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="comment">//数值交换函数</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</div><div class="line">        <span class="keyword">int</span> temp=a;</div><div class="line">        a=b;</div><div class="line">        b=temp;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> m=<span class="number">1</span>,n=<span class="number">2</span>;</div><div class="line">        swap(m,n);</div><div class="line">        System.out.println(<span class="string">"m="</span>+m+<span class="string">",n="</span>+n);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>根据以上论述我们容易知道， Swap 这个方法所操作的两个数，实际上是 m 和 n 分别的副本，交换的是副本，原值并未交换。</p>
 
       
     </div>
@@ -313,16 +325,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/02/22/02-22-java-01/">
-                    每天巩固Java知识(一) 上溯造型和下溯造型
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/02/15/first-article/">
-                    一个承载了美好愿望的开始
+                <a href="/2017/02/22/02-22-java-01/">
+                    每天巩固Java知识(一) 上溯造型和下溯造型
                 </a>
             </div>
         
@@ -334,7 +340,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本类型和引用类型的不同"><span class="toc-number">1.</span> <span class="toc-text">基本类型和引用类型的不同</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本类型"><span class="toc-number">1.1.</span> <span class="toc-text">基本类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#引用类型"><span class="toc-number">1.2.</span> <span class="toc-text">引用类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#值传递和引用传递"><span class="toc-number">2.</span> <span class="toc-text">值传递和引用传递</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#值传递"><span class="toc-number">2.1.</span> <span class="toc-text">值传递</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#引用传递"><span class="toc-number">2.2.</span> <span class="toc-text">引用传递</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一些特殊的类型"><span class="toc-number">2.3.</span> <span class="toc-text">一些特殊的类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#简单例子"><span class="toc-number">2.4.</span> <span class="toc-text">简单例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#经典问题"><span class="toc-number">2.5.</span> <span class="toc-text">经典问题</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -371,7 +377,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2017/02/17/02-17-css-ellipsis/" data-title="CSS中的长度超出省略控制" data-url="https://galdon.github.io/2017/02/17/02-17-css-ellipsis/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/02/23/02-23-java-02/" data-title="每天巩固Java知识(二) 值传递和引用传递" data-url="https://galdon.github.io/2017/02/23/02-23-java-02/"></div>
     <script>
         var duoshuoQuery = {short_name:"galdon"};
         var loadComment = function(){
@@ -394,15 +400,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/02/22/02-22-java-01/" title="上一篇: 每天巩固Java知识(一) 上溯造型和下溯造型">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/02/15/first-article/" title="下一篇: 一个承载了美好愿望的开始">
+            <a href="/2017/02/22/02-22-java-01/" title="下一篇: 每天巩固Java知识(一) 上溯造型和下溯造型">
                 <i class="fa fa-angle-right"></i>
             </a>
         
